@@ -11,5 +11,9 @@ requests
 beautifulsoup4
 selenium
 webdriver-manager
-sqlite3  
 openpyxl
+joblib
+shap
+reportlab
+streamlit-folium
+

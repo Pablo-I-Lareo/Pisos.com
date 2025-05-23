@@ -1,6 +1,10 @@
 import streamlit as st
-from PIL import Image
 import base64
+import os
+
+def get_base64_image(file_name):
+    with open(os.path.join("..", "data", file_name), "rb") as image_file:
+        return base64.b64encode(image_file.read()).decode()
 
 def show_landing_page():
     # Fondo crema global
@@ -12,20 +16,15 @@ def show_landing_page():
         </style>
     """, unsafe_allow_html=True)
 
-    # Logo centrado
-    def get_base64_logo(path):
-        with open(path, "rb") as image_file:
-            return base64.b64encode(image_file.read()).decode()
-
-    logo_base64 = get_base64_logo("C:/Users/pablo/App_Pisos/data/pisos_logo.png")
-
+    # Logo base64
+    logo_base64 = get_base64_image("pisos_logo.png")
     st.markdown(f"""
         <div style='text-align: center;'>
             <img src='data:image/png;base64,{logo_base64}' width='130'/>
         </div>
     """, unsafe_allow_html=True)
 
-    # Subtítulo centrado
+    # Subtítulo
     st.markdown("""
     <div style='text-align:center; margin-top: 0.5rem; font-size:16px;'>
         Descubre inmuebles en <strong>Madrid</strong>, compara precios, analiza zonas y obtén valoraciones al instante.
@@ -34,10 +33,10 @@ def show_landing_page():
 
     st.markdown("<hr>", unsafe_allow_html=True)
 
-    # 🔍 ¿Qué puedes hacer? — imagen a la izquierda, texto a la derecha
+    # Sección ¿Qué puedes hacer?
     col1, col2 = st.columns([1, 1.4])
     with col1:
-        st.image("C:/Users/pablo/App_Pisos/data/imagen_para_piso.png", width=390)
+        st.image(os.path.join("..", "data", "imagen_para_piso.png"), width=390)
     with col2:
         st.markdown("""
         <h3>🔍 ¿Qué puedes hacer en esta app?</h3>
@@ -52,10 +51,10 @@ def show_landing_page():
 
     st.markdown("<hr>", unsafe_allow_html=True)
 
-    # ✅ Beneficios clave 
+    # Beneficios clave
     col3, col4 = st.columns([1, 1.4])
     with col3:
-        st.image("C:/Users/pablo/App_Pisos/data/beneficios.png", width=390)
+        st.image(os.path.join("..", "data", "beneficios.png"), width=390)
     with col4:
         st.markdown("""
         <h3>✅ Beneficios clave</h3>

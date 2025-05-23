@@ -17,7 +17,6 @@ from bases_de_datos.app_streamlit_sql import show_sql_explorer
 from Equipo.about_us import show_about_us
 
 from machine_learning.detector_piso import show_deal_detector
-from machine_learning.redes_neuronales import show_redes_neuronales
 from machine_learning.calculadora_compra import show_calculadora_compra
 
 from alquiler.tabla_detallada import show_tabla_detallada_page  
@@ -52,7 +51,7 @@ if "modo" not in st.session_state:
 # --- Selector principal (ordenado: Venta primero) ---
 modo = st.sidebar.selectbox(
     "📂 Selecciona tipo de análisis:",
-    ["Venta", "Alquiler", "Base de Datos", "Redes Neuronales", "About Us"],
+    ["Venta", "Alquiler", "Base de Datos", "About Us"],
     key="modo_selector"
 )
 
@@ -122,9 +121,7 @@ elif st.session_state.modo == "venta":
     elif pagina == "Distribución de los precios":
         show_grafico_distribucion_precios()
 
-# --- Página: Redes Neuronales ---
-elif st.session_state.modo == "redes_neuronales":
-    show_redes_neuronales()
+
 
 # --- Página: About Us ---
 elif st.session_state.modo == "about_us":

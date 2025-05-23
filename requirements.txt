@@ -15,3 +15,5 @@ openpyxl
 joblib
 shap
 reportlab
+streamlit-folium
+
